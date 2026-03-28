@@ -4,7 +4,7 @@ command_timeout = 800
 
 # 2 dòng: dòng 1 info, dòng 2 prompt
 format = """
-$directory$git_branch$git_status$jobs$status$fill$cmd_duration$time
+$directory$git_branch$git_status$conda$jobs$status$fill$cmd_duration$time
 $character
 """
 
@@ -40,6 +40,13 @@ modified = "!${count} "
 staged = "+${count} "
 renamed = "»${count} "
 deleted = "✘${count} "
+
+# ----- CONDA -----
+[conda]
+symbol = " "
+style = "bold fg:#89dceb"
+format = "via [$symbol$environment]($style) "
+ignore_base = false
 
 # ----- “đủ tính năng” nhưng chỉ hiện khi cần -----
 # hiện số job nền (bg) nếu có (ví dụ đang chạy sleep &, build &, ...)
