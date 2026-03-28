@@ -1,0 +1,67 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 34,
+  "margin": "8 12 0 12",
+  "spacing": 8,
+  "modules-left": [
+    "niri/workspaces"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "tray",
+    "pulseaudio",
+    "network",
+    "battery"
+  ],
+  "niri/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "active": "",
+      "default": ""
+    }
+  },
+  "clock": {
+    "format": "  {:%H:%M}",
+    "tooltip-format": "{:%A, %d %B %Y}"
+  },
+  "pulseaudio": {
+    "format": "{icon}  {volume}%",
+    "format-muted": "   Muted",
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "scroll-step": 5
+  },
+  "network": {
+    "format-wifi": "   {signalStrength}%",
+    "format-disconnected": "󰤭   Offline",
+    "tooltip-format": "{ifname} via {gwaddr}\n{ipaddr}/{cidr}"
+  },
+  "battery": {
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "format": "{icon}  {capacity}%",
+    "format-charging": "  {capacity}%",
+    "format-plugged": "  {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
+  }
+}

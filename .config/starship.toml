@@ -1,0 +1,76 @@
+add_newline = false
+scan_timeout = 30
+command_timeout = 800
+
+# 2 dòng: dòng 1 info, dòng 2 prompt
+format = """
+$directory$git_branch$git_status$jobs$status$fill$cmd_duration$time
+$character
+"""
+
+# đẩy phần bên phải (duration/time) sang phải
+[fill]
+symbol = " "
+
+# ----- PATH -----
+[directory]
+style = "bold fg:#89b4fa"
+truncation_length = 5
+truncation_symbol = "…/"
+home_symbol = "~"
+read_only = " "
+format = "[$path]($style)[$read_only](fg:#f38ba8) "
+
+# ----- GIT -----
+[git_branch]
+symbol = " "
+style = "bold fg:#a6e3a1"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+style = "fg:#f9e2af"
+format = "[$all_status$ahead_behind]($style) "
+conflicted = " "
+ahead = "⇡${count} "
+behind = "⇣${count} "
+diverged = "⇕⇡${ahead_count}⇣${behind_count} "
+untracked = "?${count} "
+stashed = " ${count} "
+modified = "!${count} "
+staged = "+${count} "
+renamed = "»${count} "
+deleted = "✘${count} "
+
+# ----- “đủ tính năng” nhưng chỉ hiện khi cần -----
+# hiện số job nền (bg) nếu có (ví dụ đang chạy sleep &, build &, ...)
+[jobs]
+symbol = " "
+style = "fg:#cba6f7"
+format = "[$symbol$number]($style) "
+number_threshold = 1
+
+# hiện exit code khi lệnh trước bị lỗi
+[status]
+disabled = false
+style = "bold fg:#f38ba8"
+format = "[✘ $status]($style) "
+map_symbol = true
+pipestatus = true
+
+# ----- RIGHT SIDE -----
+[cmd_duration]
+min_time = 800
+style = "fg:#fab387"
+format = "[󰔟 $duration]($style) "
+
+[time]
+disabled = false
+time_format = "%H:%M"
+style = "fg:#6c7086"
+format = "[$time]($style)"
+
+# ----- PROMPT CHAR -----
+[character]
+success_symbol = "[❯](bold fg:#a6e3a1)"
+error_symbol = "[❯](bold fg:#f38ba8)"
+vicmd_symbol = "[❮](bold fg:#cba6f7)"
